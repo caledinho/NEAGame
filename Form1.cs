@@ -84,7 +84,16 @@ namespace NEA_Game
             public double VelocityX {  get; set; } public double VelocityY { get; set; }
             public double AngularVelocity { get; set; }
 
-            public void UpdatePosition() { }
+            public void UpdateMovement() 
+            { 
+                
+            }
+            public void HandleCushionHit(){}
+            public void CheckCollision(){}
+            public bool isPotted(bool foul)
+            {
+                return foul=true;
+            }
         }
         public class CueBall : Ball
         {
@@ -123,6 +132,7 @@ namespace NEA_Game
             public void StartGame() { }
             public void GameLoop() { }
             public void EndShotTurn() { }
+            
         }
         public void UpdateMovement() { }
         public void HandleColision() { }
@@ -134,5 +144,9 @@ namespace NEA_Game
         {
 
         }
+        private void Record(string username, int score)
+        {
+            
+        }        
     }
 }
