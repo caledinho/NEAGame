@@ -83,10 +83,24 @@ namespace NEA_Game
             public int PositionX { get; set; } public int PositionY { get; set; }
             public double VelocityX {  get; set; } public double VelocityY { get; set; }
             public double AngularVelocity { get; set; }
+            private const int ballRadius = 12; //half of 25 pixel ball size
 
             public void UpdateMovement() 
             { 
-                
+                PositionX = PositionX + VelocityX; //calculates the new X-Value
+                PositionY = PositionY + VelocityY; //calculates the new Y-Value
+                double const friction = 0.985; //energy loss to the cloth
+                VelocityX = VelocityX * friction; //updates the new X-Velocity
+                VelocityY = VelocityY * friction; //updates the new Y-Velocity
+                //Create zero velocity to stop infinite tiny movements
+                if (Maths.Abs(VelocityX) < 0.1)
+                {
+                    VelocityX = 0;
+                }    
+                if (Maths.Abs(VelocityY) < 0.1)
+                {
+                    VelocityY = 0;
+                }
             }
             public void HandleCushionHit(){}
             public void CheckCollision(){}
