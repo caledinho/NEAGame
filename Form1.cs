@@ -93,16 +93,21 @@ namespace NEA_Game
                 VelocityX = VelocityX * friction; //updates the new X-Velocity
                 VelocityY = VelocityY * friction; //updates the new Y-Velocity
                 //Create zero velocity to stop infinite tiny movements
-                if (Maths.Abs(VelocityX) < 0.1)
+                if (Maths.Abs(VelocityX) < 0.1) 
                 {
-                    VelocityX = 0;
+                    VelocityX = 0; //if velocity is less than 0.1 sets the speed to 0
                 }    
                 if (Maths.Abs(VelocityY) < 0.1)
                 {
-                    VelocityY = 0;
+                    VelocityY = 0; //if velocity is less than 0.1 sets the speed to 0
                 }
             }
-            public void HandleCushionHit(){}
+            public void HandleCushionHit(int tableWidth, int tableHeight,int borderSize)
+            {
+                int leftWall = borderSize;
+                int rightWall = tableWidth - borderSize;
+                int topWall = 
+            }
             public void CheckCollision(){}
             public bool isPotted(bool foul)
             {
