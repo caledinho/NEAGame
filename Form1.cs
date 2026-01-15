@@ -106,9 +106,41 @@ namespace NEA_Game
             {
                 int leftWall = borderSize;
                 int rightWall = tableWidth - borderSize;
-                int topWall = 
+                int topWall = borderSize;
+                int bottomWall = tableHeight - borderSize;
+
+                //write code to detect collision with left and right walls
+                if (PositionX < leftWall)
+                {
+                    VelocityX = -VelocityX * 0.9; // ball hits the cushion, the horizontal velocity is reversed and a slight energy loss is applied
+                    PositionX = leftWall; //prevents the ball from sticking out the cushion
+                }
+                else if ((PositionX + ballRadius*2) > rightWall)
+                {
+                    VelocityX = -VelocityX * 0.9; //reverses velocity and applies energy loss
+                    PositionX = rightWall - (ballRadius*2); //stops ball sticking out
+                }
+                //write code to detect collision with top and bottom walls
+                if (PositionY < topWall)
+                {
+                    VelocityY = -VelocityY * 0.9; Reverses the Y direction velocity and applies energy loss;
+                    PositionY = topWall; //makes sure the ball doesnt stick out
+                }
+                else if ((PositionY + ballRadius*2) > bottomWall)
+                {
+                    VelocityY= -VelocityY * 0.9; //reverses Y direction velocity and applies energy loss
+                    PositionY = bottomWall - (ballRadius*2); //ensures the ball doesnt stick out
+                }
             }
-            public void CheckCollision(){}
+            public void CheckCollision(Ball otherBall)
+            {
+                //use pythagoras to check distance between other ball
+                double dx = (this.PositonX + ballRadius) - (otherBall.PositionX + ballRadius);
+                double dy = (this.PositionY + ballRadius) - (otherBall.PositionY + ballRadius);
+                double distance = Math.Sqrt( (Math.Pow(dx,2) + Math.Pow(dy,2) );
+
+                if (distance < (ballRadius * 2))
+            }
             public bool isPotted(bool foul)
             {
                 return foul=true;
