@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -89,7 +89,7 @@ namespace NEA_Game
             { 
                 PositionX = PositionX + VelocityX; //calculates the new X-Value
                 PositionY = PositionY + VelocityY; //calculates the new Y-Value
-                double const friction = 0.985; //energy loss to the cloth
+                const double friction = 0.985; //energy loss to the cloth
                 VelocityX = VelocityX * friction; //updates the new X-Velocity
                 VelocityY = VelocityY * friction; //updates the new Y-Velocity
                 //Create zero velocity to stop infinite tiny movements
