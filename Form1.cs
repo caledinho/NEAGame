@@ -135,9 +135,36 @@ namespace NEA_Game
             public void CheckCollision(Ball otherBall)
             {
                 //use pythagoras to check distance between other ball
-                double dx = (this.PositonX + ballRadius) - (otherBall.PositionX + ballRadius);
-                double dy = (this.PositionY + ballRadius) - (otherBall.PositionY + ballRadius);
-                double distance = Math.Sqrt( (Math.Pow(dx,2) + Math.Pow(dy,2) );
+                double dx = (this.PositonX + ballRadius) - (otherBall.PositionX + ballRadius); //gets the x-distance
+                double dy = (this.PositionY + ballRadius) - (otherBall.PositionY + ballRadius); //gets the y-distance
+                double distance = Math.Sqrt( (Math.Pow(dx,2) + Math.Pow(dy,2) ); //finds total distance
+
+                //check if balls are colliding
+                if (distance < (ballRadius * 2))
+                {
+                    /finds the exact distance needed to fix the overlap
+                    double overlap = (ballRadius * 2) - distance; //check the overlap of the balls
+                    double overlapX = (dx / distance) * (overlap / 2); 
+                    double overlapY = (dx / distance) * (overlap / 2);
+                    
+                    //adds or subtracts necessary distance to fix the overlap
+                    this.PositionX += overlapX;
+                    this.PositionY += overlapY;
+                    otherBall.PositionX -= overlapX;
+                    otherBall.PositionY -= overlapY;
+
+                    //conserve momentum using The Law of Conservation of Momentum
+                    double tempVelocityX = this.VelocityX; //stores the object balls current velocity
+                    double tempVelocityY = this.VelocityY;
+
+                    //Ball A takes Ball B's Velocity and Ball B takes Ball A's
+                    
+                    this.VelocityX = otherBall.VelocityX;
+                    this.VelocityY = otherBall.VelocityY;
+                    otherBall.VelocityX = tempVelocityX;
+                    otherBall.VelocityY = tempVelocityY;
+                    
+                }
 
                 if (distance < (ballRadius * 2))
             }
