@@ -165,12 +165,10 @@ namespace NEA_Game
                     otherBall.VelocityY = tempVelocityY;
                     
                 }
-
-                if (distance < (ballRadius * 2))
             }
             public bool isPotted(bool foul)
             {
-                return foul=true;
+                
             }
         }
         public class CueBall : Ball
