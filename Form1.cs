@@ -168,7 +168,8 @@ namespace NEA_Game
             }
             public bool isPotted(bool foul)
             {
-                
+                int[] pockets = 6;
+                int pocketRadius = 17; //half of pocket size 35  
             }
         }
         public class CueBall : Ball
